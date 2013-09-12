@@ -37,7 +37,7 @@ node2bat v0.0.1 支持的 js API 是 NodeJS API 的子集：
 *	[process.env](http://nodejs.org/api/process.html#process_process_env)
 *	[process.exit([code])](http://nodejs.org/api/process.html#process_process_env)
 *	[process.cwd()](http://nodejs.org/api/process.html#process_process_cwd)
-*	[process.stdout.write(message)](http://nodejs.org/api/process.html#process_process_stdout)]
+*	[process.stdout.write(message)](http://nodejs.org/api/process.html#process_process_stdout)
 *	[console.log(message)](http://nodejs.org/api/console.html#console_console_log_data)
 *	[__filename](http://nodejs.org/api/globals.html#globals_filename)
 *	[__dirname](http://nodejs.org/api/globals.html#globals_dirname)
