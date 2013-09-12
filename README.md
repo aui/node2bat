@@ -28,9 +28,9 @@ node2bat 是一个可以将 NodeJS 脚本编译为 Windows 批处理脚本的工
 
 运行完毕后会立刻生成独立的 includeHTML.bat，你也可以双击打开它试用一下。
 
-##	js API
+##	JS API
 
-node2bat v0.0.1 支持的 js API 是 NodeJS API 的子集，包含基本的文件与路径操作：
+node2bat v0.0.1 支持的 JS API 是 NodeJS API 的子集，包含基本的文件与路径操作：
 
 ###	全局变量
 
