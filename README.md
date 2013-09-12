@@ -14,7 +14,7 @@ node2bat 是一个可以将 NodeJS 脚本编译为 Windows 批处理脚本的工
 
 	$ node2bat <file>
 	
-<file> 为 node 脚本，只支持 utf-8 编码
+``<file>`` 为 node 脚本，只支持 utf-8 编码
 
 ##	运行示例
 
