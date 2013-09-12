@@ -1,0 +1,65 @@
+#!/usr/bin/env node
+
+'use strict';
+
+var node2bat = require('../node2bat.js');
+var fs = require('fs');
+
+
+var help = function () {
+    process.stdout.write('Usage: node2bat <file>\n');
+};
+
+
+var file;
+var value;
+var args = process.argv.slice(2);
+
+if (args[0] && /^[^-]|\//.test(args[0])) {
+    file = args.shift();
+}
+
+
+while (args.length > 0) {
+    value = args.shift();
+    switch (value) {
+		
+		case '-h':
+        case '--help':
+            help();
+            process.exit();
+            break;
+		
+		case '-v':
+        case '--version':
+            var version = require('../package.json').version;
+            process.stdout.write(version + '\n');
+            process.exit();
+            break;
+
+        default:
+
+            if (!file) {
+                file = value;
+            }
+    }
+}
+
+
+if (!file) {
+    help();
+    process.exit(1);
+}
+
+
+if (!fs.existsSync(file)) {
+    help();
+    process.exit(1);
+};
+
+
+
+node2bat.compile(file);
+
+
+

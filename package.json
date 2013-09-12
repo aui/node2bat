@@ -1,0 +1,21 @@
+{
+  "name": "node2bat",
+  "version": "0.0.1",
+  "readmeFilename": "README.md",
+  "description": "node2bat",
+  "homepage": "https://github.com/aui/node2bat",
+  "keywords": [],
+  "author": "aui",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/node2bat/node2bat.git"
+  },
+  "main": "./node2bat.js",
+  "bin": {
+    "node2bat": "./bin/node2bat"
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "optionalDependencies": {},
+  "license": "MIT"
+}
