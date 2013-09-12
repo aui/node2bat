@@ -18,13 +18,15 @@ node2bat 是一个可以将 NodeJS 脚本编译为 Windows 批处理脚本的工
 
 ##	运行示例
 
-源码 test 目录是一个演示例子，其中 includeHTML.js 是基于 NodeJS 编写的自动化脚本，它的用途是给页面制作人员批量更新局部模板的。我们可以编译 includeHTML.js，让其不再依赖 NodeJS。
+源码 test 目录是一个演示例子，其中 includeHTML.js 是基于 NodeJS 编写的自动化脚本，它的用途是给页面制作人员批量更新局部模板的。
+
+这个脚本里面用到了 NodeJS 的文件与路径处理，我们可以编译 includeHTML.js 为 bat 文件，这样用户拿到我们的 bat 文件就可以直接双击运行了，无需安装 NodeJS 与学习命令行。
 
 切换到源码目录，运行：
 
 	$ node2bat test/includeHTML.js
 
-运行完毕后会立刻生成独立的 includeHTML.bat，双击即可运行，无需安装 NodeJS 与学习命令行。
+运行完毕后会立刻生成独立的 includeHTML.bat，你也可以双击打开它试用一下。
 
 ##	js API
 
