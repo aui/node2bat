@@ -24,7 +24,7 @@ node2bat 是一个可以将 NodeJS 脚本编译为 Windows 批处理脚本的工
 
 	$ node2bat test/includeHTML.js
 
-运行完毕后会立刻生成 test/includeHTML.bat，这样使用者是需要双击即可运行。
+运行完毕后会立刻生成 includeHTML.bat，这样使用者是需要双击即可运行。
 
 ##	js API
 
