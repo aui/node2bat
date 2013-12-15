@@ -4,6 +4,10 @@
 
 node2bat 是一个可以将 NodeJS 脚本编译为 Windows 批处理脚本的工具。编译后的批处理不再依赖 NodeJS，双击可直接运行。你可以使用 NodeJS 的 API 来编写一些轻量级的自动化 Windows 批处理脚本。
 
+##	实现原理
+
+windows 中自带了 javascript 引擎支持 jscript，并且可以调用一些本地 API，所以 node2bat 便是使用 jscript 封装了一层 nodejs 的 api，然后打包到 bat 脚本中。
+
 ##	安装
 
 先安装 NodeJS 与 npm，然后执行：
