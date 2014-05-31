@@ -2,7 +2,7 @@
 
 'use strict';
 
-var node2bat = require('../node2bat.js');
+var node2bat = require('../src/node2bat.js');
 var fs = require('fs');
 
 
