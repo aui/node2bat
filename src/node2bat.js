@@ -2,8 +2,9 @@
 
 var fs = require('fs');
 var path = require('path');
+var version = require('../package.json').version;
 
-var runtime = fs.readFileSync(path.join(__dirname, 'lib/node2bat.runtime.js'), 'utf-8');
+var runtime = fs.readFileSync(path.join(__dirname, 'runtime.js'), 'utf-8');
 
 var toAnsi = function (code) {
 	var unicode = [], ansi;
@@ -21,7 +22,10 @@ var toAnsi = function (code) {
 var compile = function (code) {
 	code = code.replace(/^\#\!.*/, '');
 	code = toAnsi(code);
-	return runtime.replace(/'<\:node_code>'/, code);
+	return runtime
+	.replace(/'<\:build_time>'/g, Date.now())
+	.replace(/'<\:node_code>'/g, code)
+	.replace(/'<\:compiler_version>'/g, version);
 };
 
 exports.compile = function (file) {
