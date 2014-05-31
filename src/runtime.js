@@ -1071,7 +1071,7 @@ try {
 
                     // TODO: test BOM
                     // /^0xEF0xBB0xBF/
-                    if (charset !== 'ascii') {
+                    if (charset === 'utf-8') {
                         stream.Position = 3;
                     }
                     

@@ -5,8 +5,8 @@ cd %~dp0
 call CScript.EXE "%~dpnx0" //Nologo //e:jscript %*
 goto cmd
 -------------------------------------------------------
-Build       1401553234841
-Compiler    node2bat.js@0.0.2 | https://github.com/aui/node2bat
+Build       1401562634538
+Compiler    node2bat.js@0.0.4-rc1 | https://github.com/aui/node2bat
 -------------------------------------------------------
 */(function () {
 
@@ -102,10 +102,18 @@ if (fs.statSync(base).isDirectory()) {
 }
 
 }).call({
-    node2bat: "0.0.2"
+    node2bat: "0.0.4-rc1"
 }, function (global, exports) {
     // NodeJS Runtime
     global.global = global;
+
+
+    global.__filename = WScript.ScriptFullName;
+
+    global.__dirname = WScript
+                .ScriptFullName
+                .replace(WScript.ScriptName, '')
+                .replace(/\\+$/, '');
 
     global.process = {
 
@@ -127,10 +135,7 @@ if (fs.statSync(base).isDirectory()) {
 
 
         cwd: function () {
-            return WScript
-                .ScriptFullName
-                .replace(WScript.ScriptName, '')
-                .replace(/\\+$/, '');
+            return global.__dirname;
         },
 
         // @see http://technet.microsoft.com/en-us/library/ee156595.aspx
@@ -264,11 +269,6 @@ if (fs.statSync(base).isDirectory()) {
             return require(path.join('/'));
         };
     };
-
-
-    global.__filename = WScript.ScriptFullName;
-
-    global.__dirname = global.process.cwd();
 
 
     /*global.setTimeout = function (fn, time) {
@@ -1155,7 +1155,7 @@ if (fs.statSync(base).isDirectory()) {
 
                     // TODO: test BOM
                     // /^0xEF0xBB0xBF/
-                    if (charset !== 'ascii') {
+                    if (charset === 'utf-8') {
                         stream.Position = 3;
                     }
                     

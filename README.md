@@ -12,11 +12,11 @@ windows 中自带了 javascript 引擎支持 jscript，所以 node2bat 便是使
 
 先安装 NodeJS，然后执行：
 
-	$ npm install node2bat -g
+	npm install node2bat -g
 	
 ##	使用
 
-	$ node2bat <file>
+	node2bat <file>
 	
 ``<file>`` 为 node 脚本，只支持 utf-8 编码
 
@@ -28,7 +28,7 @@ windows 中自带了 javascript 引擎支持 jscript，所以 node2bat 便是使
 
 切换到源码目录，运行：
 
-	$ node2bat demo/includeHTML/includeHTML.js
+	node2bat demo/includeHTML/includeHTML.js
 
 运行完毕后会立刻生成独立的 includeHTML.bat，你也可以双击打开它试用一下。
 
@@ -58,8 +58,6 @@ node2bat 支持 NodeJS API 的核心 API，并且支持大多数 ECMA5 的 API�
 	*	[console.timeEnd(label)](http://nodejs.org/api/console.html#console_console_timeend_label)
 	*	[console.assert(expression, [message])](http://nodejs.org/api/console.html#console_console_assert_expression_message)
 
->	注：如果拖拽文件到 bat 图标上执行，process.argv.slice(2) 可以获取这些文件的列表
-
 ###	内置模块
 
 *   File System
@@ -81,6 +79,10 @@ node2bat 支持 NodeJS API 的核心 API，并且支持大多数 ECMA5 的 API�
     *   [path.extname(p)](http://nodejs.org/api/path.html#path_path_extname_p)
     *   [path.sep](http://nodejs.org/api/path.html#path_path_sep)
     *   [path.delimiter](http://nodejs.org/api/path.html#path_path_delimiter)
+    
+##	拖拽支持
+
+如果拖拽文件到 bat 图标上运行，使用``process.argv.slice(2)`` 可以获取这些文件的列表。
     
 ##	测试用例
 
