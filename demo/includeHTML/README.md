@@ -36,4 +36,4 @@ includeHTML 是一个简单易用的 HTML 静态文件局部模板批量更新�
 	
 将工具放在模板目录，双击 includeHTML.bat 即可。
 
-> 处理单个页面拖拽到 includeHTML.bat 图标上运行即可。
+如果将文件拖放到 includeHTML.bat 图标上打开，那么只会处理被拖拽的文件。

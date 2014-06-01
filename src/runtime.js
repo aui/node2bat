@@ -33,8 +33,6 @@ try {
 
     global.process = {
 
-        title: 'node',
-
         argv: function () {
             var Arguments = WScript.Arguments;
             var length = Arguments.length;
@@ -56,8 +54,8 @@ try {
 
         // @see http://technet.microsoft.com/en-us/library/ee156595.aspx
         env: (function () {
-            var wsh = new ActiveXObject("WScript.Shell");
-            var processObject = wsh.Environment("Process");
+            var wsh = new ActiveXObject('WScript.Shell');
+            var processObject = wsh.Environment('Process');
             var list = [
                 'ALLUSERSPROFILE',
                 'APPDATA',
@@ -1022,17 +1020,21 @@ try {
             return listall(path);
         };
 
-        exports.readFileSync = function (file, charset) {
+        exports.readFileSync = function (file, encoding) {
+            if (typeof encoding === 'object') {
+                encoding = encoding.encoding;
+            }
+
             var stream = new ActiveXObject('adodb.stream');
             var fileContent;
 
-            stream.Type = charset ? 2 : 1;
+            stream.Type = encoding ? 2 : 1;
             stream.Open();
 
-            if (charset) {
-                stream.Charset = charset;
+            if (encoding) {
+                stream.Charset = encoding;
             } else {
-                throw new TypeError('Bad arguments');
+                throw new TypeError('Supports only read text, please specify the encoding');
             }
 
             try {
@@ -1042,7 +1044,7 @@ try {
             }
 
             fileContent = new String(stream.ReadText());
-            fileContent.Charset = charset;
+            fileContent.Charset = encoding;
             stream.Close();
 
             return fileContent.toString();
@@ -1050,19 +1052,25 @@ try {
 
         // @see http://bathome.l3.wuyou.com/redirect.php?goto=findpost&ptid=10300&pid=66972
         // @see http://www.clockworksoftware.com/asp/Products/vbs2js.asp
-        exports.writeFileSync = function (file, data, charset) {
+        exports.writeFileSync = function (file, data, encoding) {
+
+            if (typeof encoding === 'object') {
+                encoding = encoding.encoding;
+            }
+
+            encoding = encoding || 'utf-8';
+
             var binData;
-            var stream = new ActiveXObject("adodb.Stream");
+            var stream = new ActiveXObject('adodb.Stream');
 
             stream.Open();
 
             try {
                 
-                if (charset) {
-
+                if (encoding) {
 
                     stream.Position = 0;
-                    stream.CharSet = charset;
+                    stream.CharSet = encoding;
                     stream.WriteText(data);
                     stream.SetEOS();
 
@@ -1071,7 +1079,8 @@ try {
 
                     // TODO: test BOM
                     // /^0xEF0xBB0xBF/
-                    if (charset === 'utf-8') {
+                    if (encoding === 'utf-8') {
+                        // Remove BOM
                         stream.Position = 3;
                     }
                     
